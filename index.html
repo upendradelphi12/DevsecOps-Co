@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevOps Monitor</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <main class="page page--login active" id="loginPage">
+      <div class="auth-card">
+        <div class="brand-panel">
+          <div class="brand-logo">AZDO</div>
+          <h1>Azure DevOps Monitor</h1>
+          <p>Track pipeline health, AKS pods, and container apps from one dashboard.</p>
+        </div>
+        <div class="auth-form">
+          <h2>Sign in</h2>
+          <div class="input-group">
+            <label for="loginEmail">Email address</label>
+            <input type="email" id="loginEmail" placeholder="name@company.com" autocomplete="username" />
+          </div>
+          <div class="input-group">
+            <label for="loginPassword">Password</label>
+            <input type="password" id="loginPassword" placeholder="Password" autocomplete="current-password" />
+          </div>
+          <button class="btn btn-primary" id="loginBtn">Login</button>
+          <button class="btn btn-link" id="resetPasswordBtn">Forgot password?</button>
+          <div class="auth-footer">
+            <p>New to Azure DevOps Monitor?</p>
+            <button class="btn btn-secondary" id="showRegisterBtn">Create an account</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <main class="page page--register" id="registerPage">
+      <div class="auth-card">
+        <div class="brand-panel brand-panel--small">
+          <div class="brand-logo brand-logo--small">AZDO</div>
+          <h1>Create account</h1>
+          <p>Register with your business email to access the dashboard.</p>
+        </div>
+        <div class="auth-form">
+          <h2>Register</h2>
+          <div class="form-grid">
+            <div class="input-group">
+              <label for="firstName">First name</label>
+              <input type="text" id="firstName" placeholder="First name" />
+            </div>
+            <div class="input-group">
+              <label for="lastName">Last name</label>
+              <input type="text" id="lastName" placeholder="Last name" />
+            </div>
+            <div class="input-group full-width">
+              <label for="phone">Phone number</label>
+              <input type="tel" id="phone" placeholder="+1 555 123 4567" />
+            </div>
+            <div class="input-group full-width">
+              <label for="registerEmail">Business email address</label>
+              <input type="email" id="registerEmail" placeholder="you@company.com" />
+            </div>
+            <div class="input-group">
+              <label for="registerPassword">Password</label>
+              <input type="password" id="registerPassword" placeholder="Password" />
+            </div>
+            <div class="input-group">
+              <label for="confirmPassword">Confirm password</label>
+              <input type="password" id="confirmPassword" placeholder="Confirm password" />
+            </div>
+          </div>
+          <button class="btn btn-primary" id="registerBtn">Register</button>
+          <div class="auth-footer">
+            <p>Already registered?</p>
+            <button class="btn btn-secondary" id="showLoginBtn">Back to login</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <main class="page page--dashboard" id="dashboardPage">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="brand-logo">AZDO</div>
+          <span>DevOps Monitor</span>
+        </div>
+        <nav class="sidebar-nav">
+          <button class="nav-item active" data-panel="pipelines">Pipelines</button>
+          <button class="nav-item" data-panel="security">Security</button>
+          <button class="nav-item" data-panel="governance">Governance</button>
+          <button class="nav-item" data-panel="environment">Environment</button>
+          <button class="nav-item" data-panel="settings">Settings</button>
+          <button class="nav-item" data-panel="metrics">Metrics</button>
+          <button class="nav-item" data-panel="quality">Code quality</button>
+        </nav>
+      </aside>
+      <section class="dashboard-content">
+        <header class="dashboard-header">
+          <div>
+            <h1>Cloud delivery monitoring</h1>
+            <p>Overview of pipeline and cluster health for Azure DevOps, AKS and Container Apps.</p>
+          </div>
+          <div class="user-profile" id="profilePanel">
+            <span class="user-avatar">JD</span>
+            <div>
+              <strong id="profileName">John Doe</strong>
+              <span id="profileEmail">john.doe@company.com</span>
+            </div>
+          </div>
+        </header>
+
+        <section class="dashboard-widgets">
+          <div class="widget widget--status">
+            <div class="widget-header">
+              <h2>Azure DevOps Pipeline Status</h2>
+              <button class="btn btn-ghost" id="refreshBtn">Refresh</button>
+            </div>
+            <div class="pipeline-grid">
+              <div class="pipeline-card pipeline-card--success">
+                <h3>Build pipeline</h3>
+                <p>Status: <strong>Succeeded</strong></p>
+                <p>Last run: 4 min ago</p>
+              </div>
+              <div class="pipeline-card pipeline-card--warning">
+                <h3>Release pipeline</h3>
+                <p>Status: <strong>At risk</strong></p>
+                <p>Last run: 15 min ago</p>
+              </div>
+              <div class="pipeline-card pipeline-card--error">
+                <h3>Integration pipeline</h3>
+                <p>Status: <strong>Failed</strong></p>
+                <p>Last run: 22 min ago</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="widget widget--details">
+            <div class="widget-header">
+              <h2>Cluster health</h2>
+            </div>
+            <div class="status-panels">
+              <div class="status-panel">
+                <h3>AKS Pods</h3>
+                <ul>
+                  <li><strong>web-app</strong> - Running (4/4)</li>
+                  <li><strong>api-service</strong> - Running (2/2)</li>
+                  <li><strong>db-migrator</strong> - Pending</li>
+                </ul>
+              </div>
+              <div class="status-panel">
+                <h3>Container Apps</h3>
+                <ul>
+                  <li><strong>auth-app</strong> - Healthy</li>
+                  <li><strong>order-processor</strong> - Degraded</li>
+                  <li><strong>report-worker</strong> - Healthy</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

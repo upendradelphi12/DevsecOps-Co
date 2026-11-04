@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - '5000:80'
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+  web:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - '5173:80'
